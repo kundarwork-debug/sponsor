@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Support My Work — Prasad Kundar</title>
+
+  <link rel="icon" type="image/svg+xml" href="logo.svg?v=23.0">
+  <link rel="stylesheet" href="common.css?v=23.0">
+
+  <!-- GOOGLE FONTS & MATERIAL SYMBOLS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+  <style>
+    :root {
+      --bg-base: #000000;
+      --surface-card: #0a0a0a;
+      --surface-border: #222222;
+      --surface-hover: #161616;
+      
+      --text-main: #ededed;
+      --text-muted: #888888;
+      --text-faint: #555555;
+      
+      --accent: #ededed;
+      
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-sans);
+    }
+
+    html, body {
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      overflow-y: auto;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    main {
+      flex: 1;
+      width: 100%;
+      max-width: 580px;
+      margin: 0 auto;
+      padding: 80px 24px 60px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* PROFILE HEADER */
+    .profile-header {
+      margin-bottom: 32px;
+    }
+
+    .handle-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .avatar-img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid var(--surface-border);
+      background: #111;
+    }
+
+    .handle-text {
+      font-family: var(--font-mono);
+      font-size: 13.5px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .intro-title {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 5vw, 36px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text-main);
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .intro-desc {
+      font-size: 14.5px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      font-weight: 400;
+    }
+
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: var(--surface-border);
+      margin: 32px 0;
+    }
+
+    .section-title {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-faint);
+      margin-bottom: 16px;
+    }
+
+    /* SUPPORT CARDS GRID */
+    .support-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .support-card {
+      background: var(--surface-card);
+      border: 1px solid var(--surface-border);
+      border-radius: 14px;
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .support-card:hover {
+      background: var(--surface-hover);
+      border-color: #333333;
+      transform: translateY(-1px);
+    }
+
+    .card-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 0;
+    }
+
+    .card-name {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .card-sub {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .card-actions-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #161616;
+      border: 1px solid var(--surface-border);
+      color: var(--text-main);
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+      text-decoration: none;
+    }
+
+    .support-card:hover .card-action-btn {
+      background: #222222;
+      border-color: #444444;
+    }
+
+    /* QR CODE MODAL */
+    .qr-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .qr-modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .qr-modal-card {
+      background: #0d0d0d;
+      border: 1px solid #2a2a2a;
+      border-radius: 20px;
+      padding: 28px;
+      width: 100%;
+      max-width: 340px;
+      text-align: center;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.7);
+      transform: scale(0.95);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .qr-modal-overlay.active .qr-modal-card {
+      transform: scale(1);
+    }
+
+    .qr-modal-title {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    .qr-modal-sub {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .qr-frame {
+      background: #ffffff;
+      padding: 16px;
+      border-radius: 14px;
+      display: inline-block;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+
+    .qr-frame img {
+      width: 200px;
+      height: 200px;
+      display: block;
+    }
+
+    .btn-close-qr {
+      background: #1a1a1a;
+      border: 1px solid #333;
+      color: #fff;
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.2s ease;
+    }
+
+    .btn-close-qr:hover {
+      background: #2a2a2a;
+    }
+
+    /* TOAST NOTIFICATION */
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: #222222;
+      color: #ffffff;
+      padding: 10px 20px;
+      border-radius: 99px;
+      font-size: 13px;
+      font-weight: 600;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      border: 1px solid #333333;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 1000;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .material-symbols-outlined {
+      font-size: 16px;
+    }
+
+    .back-home-row {
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .back-link {
+      font-size: 13px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s ease;
+    }
+
+    .back-link:hover {
+      color: var(--text-main);
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <!-- PROFILE HEADER -->
+    <div class="profile-header">
+      <div class="handle-row">
+        <img src="https://github.com/kundarwork-debug.png" alt="Prasad Kundar" class="avatar-img" onerror="this.src='logo.svg'">
+        <span class="handle-text">@kundarwork</span>
+      </div>
+      <h1 class="intro-title">Hi, I'm Prasad</h1>
+      <p class="intro-desc">
+        Thanks for stopping by. Every coffee, sponsorship, or share keeps the projects going.
+      </p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section-title">SUPPORT MY WORK</div>
+
+    <!-- SUPPORT LINKS CONTAINER -->
+    <div class="support-list">
+      
+      <!-- 1. BUY ME A COFFEE -->
+      <a href="https://buymeacoffee.com/kundarwork" target="_blank" rel="noopener noreferrer" class="support-card">
+        <div class="card-info">
+          <span class="card-name">Buy me a Coffee</span>
+          <span class="card-sub">buymeacoffee.com/kundarwork</span>
+        </div>
+        <span class="card-action-btn">
+          <span>Visit</span>
+          <span class="material-symbols-outlined">north_east</span>
+        </span>
+      </a>
+
+      <!-- 2. BUY ME A PIZZA -->
+      <a href="https://bondin.io/kundarwork/support" target="_blank" rel="noopener noreferrer" class="support-card">
+        <div class="card-info">
+          <span class="card-name">Buy me a Pizza</span>
+          <span class="card-sub">bondin.io/kundarwork/support</span>
+        </div>
+        <span class="card-action-btn">
+          <span>Visit</span>
+          <span class="material-symbols-outlined">north_east</span>
+        </span>
+      </a>
+
+      <!-- 3. UPI / GPAY WITH QR CODE TRIGGER -->
+      <div class="support-card" onclick="openQrModal()" role="button" title="Click to view QR code">
+        <div class="card-info">
+          <span class="card-name">UPI / GPay</span>
+          <span class="card-sub" id="upiText">kundarprasad@slc</span>
+        </div>
+        <div class="card-actions-group">
+          <button type="button" class="card-action-btn" onclick="event.stopPropagation(); openQrModal()" title="Show QR Code">
+            <span class="material-symbols-outlined">qr_code_2</span>
+            <span>QR</span>
+          </button>
+          <button type="button" class="card-action-btn" onclick="event.stopPropagation(); copyUpiId('kundarprasad@slc')" title="Copy UPI ID">
+            <span class="material-symbols-outlined">content_copy</span>
+            <span>Copy</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 4. GITHUB SPONSORS -->
+      <a href="https://github.com/sponsors/kundarwork-debug" target="_blank" rel="noopener noreferrer" class="support-card">
+        <div class="card-info">
+          <span class="card-name">GitHub Sponsors</span>
+          <span class="card-sub">github.com/sponsors/kundarwork-debug</span>
+        </div>
+        <span class="card-action-btn">
+          <span>Visit</span>
+          <span class="material-symbols-outlined">north_east</span>
+        </span>
+      </a>
+
+    </div>
+
+    <div class="back-home-row">
+      <a href="index.html" class="back-link">
+        <span class="material-symbols-outlined" style="font-size: 16px;">arrow_back</span>
+        <span>Return to Portal Workspace</span>
+      </a>
+    </div>
+  </main>
+
+  <!-- QR CODE MODAL POPUP -->
+  <div class="qr-modal-overlay" id="qrModalOverlay" onclick="closeQrModal(event)">
+    <div class="qr-modal-card" onclick="event.stopPropagation()">
+      <h3 class="qr-modal-title">Scan to Pay via UPI</h3>
+      <p class="qr-modal-sub">GPay • PhonePe • Paytm • BHIM</p>
+      
+      <div class="qr-frame">
+        <!-- Generated UPI QR Code pointing to upi://pay?pa=kundarprasad@slc&pn=Prasad%20Kundar -->
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=kundarprasad@slc%26pn=Prasad%20Kundar" alt="GPay UPI QR Code">
+      </div>
+
+      <button type="button" class="btn-close-qr" onclick="closeQrModal(event)">Close</button>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION POPUP -->
+  <div class="toast" id="toastNotification">✓ UPI ID copied to clipboard!</div>
+
+  <script>
+    function openQrModal() {
+      document.getElementById('qrModalOverlay').classList.add('active');
+    }
+
+    function closeQrModal(e) {
+      if (e.target.id === 'qrModalOverlay' || e.target.classList.contains('btn-close-qr')) {
+        document.getElementById('qrModalOverlay').classList.remove('active');
+      }
+    }
+
+    function copyUpiId(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast("✓ UPI ID copied to clipboard!");
+      }).catch(() => {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        showToast("✓ UPI ID copied to clipboard!");
+      });
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toastNotification');
+      toast.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2500);
+    }
+  </script>
+</body>
+</html>

@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Support My Work — Prasad Kundar</title>
 
-  <link rel="icon" type="image/svg+xml" href="logo.svg?v=23.0">
+  <!-- GitHub profile picture as favicon -->
+  <link rel="icon" type="image/png" href="https://github.com/kundarwork-debug.png">
+  
   <link rel="stylesheet" href="common.css?v=23.0">
 
   <!-- GOOGLE FONTS & MATERIAL SYMBOLS -->
@@ -13,9 +15,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-
-  <!-- QR CODE GENERATOR LIBRARY -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
   <style>
     :root {
@@ -261,10 +260,11 @@
       display: inline-block;
       margin-bottom: 20px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-      position: relative; /* Required for absolute centering of the avatar */
     }
 
     .qr-frame img {
+      width: 200px;
+      height: 200px;
       display: block;
     }
 
@@ -400,8 +400,9 @@
       <h3 class="qr-modal-title">Scan to Pay via UPI</h3>
       <p class="qr-modal-sub">GPay • PhonePe • Paytm • BHIM</p>
       
-      <div class="qr-frame" id="qrContainer">
-        <!-- Dynamic QR Code + Centered Avatar injected via JS -->
+      <div class="qr-frame">
+        <!-- Clean standard UPI QR Code -->
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=kundarprasad@slc%26pn=Prasad%20Kundar" alt="GPay UPI QR Code">
       </div>
 
       <button type="button" class="btn-close-qr" onclick="closeQrModal(event)">Close</button>
@@ -412,50 +413,8 @@
   <div class="toast" id="toastNotification">✓ UPI ID copied to clipboard!</div>
 
   <script>
-    let qrInitialized = false;
-
-    function initQRCode() {
-      if (qrInitialized) return;
-      
-      const container = document.getElementById('qrContainer');
-      container.innerHTML = ''; 
-
-      // Generate QR Code with High error correction level (H) to support the center logo overlay
-      new QRCode(container, {
-        text: "upi://pay?pa=kundarprasad@slc&pn=Prasad%20Kundar",
-        width: 200,
-        height: 200,
-        colorDark: "#000000",
-        colorLight: "#ffffff",
-        correctLevel: QRCode.CorrectLevel.H
-      });
-
-      // Overlay GitHub avatar in the center
-      setTimeout(() => {
-        const avatarImg = document.createElement('img');
-        avatarImg.src = "https://github.com/kundarwork-debug.png";
-        avatarImg.alt = "GitHub Avatar";
-        avatarImg.crossOrigin = "anonymous";
-        avatarImg.style.position = "absolute";
-        avatarImg.style.top = "50%";
-        avatarImg.style.left = "50%";
-        avatarImg.style.transform = "translate(-50%, -50%)";
-        avatarImg.style.width = "42px";
-        avatarImg.style.height = "42px";
-        avatarImg.style.borderRadius = "50%";
-        avatarImg.style.border = "3px solid #ffffff";
-        avatarImg.style.background = "#ffffff";
-        avatarImg.style.objectFit = "cover";
-        
-        container.appendChild(avatarImg);
-      }, 50);
-
-      qrInitialized = true;
-    }
-
     function openQrModal() {
       document.getElementById('qrModalOverlay').classList.add('active');
-      initQRCode();
     }
 
     function closeQrModal(e) {

@@ -3,448 +3,240 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#10120f">
+  <meta name="description" content="Support Prasad Kundar's independent projects with a coffee, pizza, UPI payment, or GitHub sponsorship.">
   <title>Support My Work — Prasad Kundar</title>
-
-  <!-- GitHub profile picture as favicon -->
   <link rel="icon" type="image/png" href="https://github.com/kundarwork-debug.png">
-  
-  <link rel="stylesheet" href="common.css?v=23.0">
-
-  <!-- GOOGLE FONTS & MATERIAL SYMBOLS -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-base: #000000;
-      --surface-card: #0a0a0a;
-      --surface-border: #222222;
-      --surface-hover: #161616;
-      
-      --text-main: #ededed;
-      --text-muted: #888888;
-      --text-faint: #555555;
-      
-      --accent: #ededed;
-      
-      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      --font-display: 'Space Grotesk', sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
+      color-scheme: dark;
+      --bg: #10120f;
+      --panel: #181b16;
+      --panel-2: #20241d;
+      --line: rgba(235, 240, 220, .11);
+      --text: #f2f3e9;
+      --muted: #a0a695;
+      --lime: #d5f36a;
+      --lime-ink: #1b2110;
+      --orange: #ff9c70;
+      --mono: "DM Mono", monospace;
+      --sans: "DM Sans", sans-serif;
+      --display: "Space Grotesk", sans-serif;
     }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: var(--font-sans);
+    * { box-sizing: border-box; }
+    html { min-height: 100%; scroll-behavior: smooth; }
+    body {
+      margin: 0; min-height: 100vh; overflow-x: hidden; color: var(--text);
+      background:
+        radial-gradient(ellipse at 8% 5%, rgba(213,243,106,.10), transparent 32rem),
+        radial-gradient(ellipse at 96% 38%, rgba(255,156,112,.08), transparent 30rem),
+        var(--bg);
+      font-family: var(--sans); -webkit-font-smoothing: antialiased;
     }
-
-    html, body {
-      background-color: var(--bg-base);
-      color: var(--text-main);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      overflow-x: hidden;
-      overflow-y: auto;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    main {
-      flex: 1;
-      width: 100%;
-      max-width: 580px;
-      margin: 0 auto;
-      padding: 80px 24px 60px;
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* PROFILE HEADER */
-    .profile-header {
-      margin-bottom: 32px;
-    }
-
-    .handle-row {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 24px;
-    }
-
-    .avatar-img {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 1px solid var(--surface-border);
-      background: #111;
-    }
-
-    .handle-text {
-      font-family: var(--font-mono);
-      font-size: 13.5px;
-      color: var(--text-muted);
-      font-weight: 500;
-    }
-
-    .intro-title {
-      font-family: var(--font-display);
-      font-size: clamp(28px, 5vw, 36px);
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      color: var(--text-main);
-      margin-bottom: 12px;
-      line-height: 1.2;
-    }
-
-    .intro-desc {
-      font-size: 14.5px;
-      color: var(--text-muted);
-      line-height: 1.6;
-      font-weight: 400;
-    }
-
-    .divider {
-      width: 100%;
-      height: 1px;
-      background: var(--surface-border);
-      margin: 32px 0;
-    }
-
-    .section-title {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--text-faint);
-      margin-bottom: 16px;
-    }
-
-    /* SUPPORT CARDS GRID */
-    .support-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
+    a { color: inherit; }
+    .page { width: min(100% - 40px, 900px); margin: 0 auto; padding: 42px 0 34px; }
+    .topbar { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:64px; }
+    .brand { display:flex; align-items:center; gap:11px; text-decoration:none; }
+    .brand img { width:36px; height:36px; border-radius:12px; border:1px solid var(--line); }
+    .brand span { font:500 12px var(--mono); color:var(--muted); letter-spacing:.02em; }
+    .availability { display:flex; align-items:center; gap:8px; color:var(--muted); font:11px var(--mono); letter-spacing:.06em; text-transform:uppercase; }
+    .availability::before { content:""; width:7px; height:7px; border-radius:50%; background:var(--lime); box-shadow:0 0 14px rgba(213,243,106,.7); }
+    .hero { max-width:700px; margin:0 auto 48px; text-align:center; }
+    .eyebrow { display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border:1px solid rgba(213,243,106,.24); border-radius:999px; color:var(--lime); background:rgba(213,243,106,.06); font:11px var(--mono); letter-spacing:.1em; text-transform:uppercase; }
+    .eyebrow span { font-size:14px; }
+    h1 { margin:22px 0 15px; font:600 clamp(42px, 7vw, 70px)/.99 var(--display); letter-spacing:-.065em; }
+    h1 em { color:var(--lime); font-style:normal; }
+    .intro { max-width:510px; margin:0 auto; color:var(--muted); font-size:15px; line-height:1.75; }
+    .section-head { display:flex; align-items:center; justify-content:space-between; gap:16px; margin:0 0 16px; }
+    .section-head h2 { margin:0; font:600 13px var(--mono); color:var(--muted); letter-spacing:.12em; text-transform:uppercase; }
+    .section-head span { color:#747b6b; font:11px var(--mono); }
+    .support-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:13px; }
     .support-card {
-      background: var(--surface-card);
-      border: 1px solid var(--surface-border);
-      border-radius: 14px;
-      padding: 18px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      text-decoration: none;
-      transition: all 0.2s ease;
-      cursor: pointer;
+      position:relative; min-height:142px; display:flex; flex-direction:column; justify-content:space-between;
+      padding:21px; border:1px solid var(--line); border-radius:18px; text-decoration:none;
+      background:linear-gradient(145deg, rgba(255,255,255,.045), rgba(255,255,255,.012)), var(--panel);
+      transition:transform .2s ease,border-color .2s ease,background .2s ease;
+      overflow:hidden;
     }
-
-    .support-card:hover {
-      background: var(--surface-hover);
-      border-color: #333333;
-      transform: translateY(-1px);
+    .support-card:hover { transform:translateY(-3px); border-color:rgba(213,243,106,.42); background:var(--panel-2); }
+    .support-card:focus-visible, button:focus-visible, a:focus-visible { outline:2px solid var(--lime); outline-offset:4px; }
+    .card-top { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }
+    .card-icon { width:38px; height:38px; display:grid; place-items:center; border-radius:12px; background:rgba(213,243,106,.10); color:var(--lime); font-size:19px; }
+    .arrow { color:#818878; font-size:19px; transition:transform .2s ease; }
+    .support-card:hover .arrow { transform:translate(3px,-3px); color:var(--lime); }
+    .card-title { margin:18px 0 4px; font:600 18px var(--display); letter-spacing:-.025em; }
+    .card-desc { color:var(--muted); font-size:12px; line-height:1.5; }
+    .featured { grid-column:span 2; min-height:174px; flex-direction:row; align-items:flex-end; padding:25px 27px; border-color:rgba(213,243,106,.32); background:linear-gradient(110deg,rgba(213,243,106,.14),rgba(213,243,106,.035) 58%,rgba(255,255,255,.025)),var(--panel); }
+    .featured .card-title { font-size:24px; margin-top:14px; }
+    .featured .card-desc { max-width:340px; }
+    .featured .card-icon { background:var(--lime); color:var(--lime-ink); }
+    .featured .arrow { align-self:flex-start; color:var(--lime); font-size:24px; }
+    .upi-card { cursor:pointer; text-align:left; color:inherit; font:inherit; }
+    .upi-actions { display:flex; gap:8px; margin-top:17px; }
+    .mini-btn { display:inline-flex; align-items:center; justify-content:center; gap:7px; padding:9px 12px; border:1px solid var(--line); border-radius:10px; background:rgba(255,255,255,.045); color:var(--text); font:600 11px var(--sans); cursor:pointer; transition:background .2s ease,border-color .2s ease; }
+    .mini-btn:hover { background:rgba(213,243,106,.10); border-color:rgba(213,243,106,.35); }
+    .note { display:flex; align-items:center; gap:13px; margin-top:24px; padding:16px 18px; border:1px solid var(--line); border-radius:14px; background:rgba(255,255,255,.025); color:var(--muted); font-size:12px; line-height:1.6; }
+    .note strong { color:var(--text); font-weight:600; }
+    .note-mark { flex:0 0 30px; width:30px; height:30px; display:grid; place-items:center; border-radius:10px; color:var(--orange); background:rgba(255,156,112,.10); font-size:15px; }
+    footer { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-top:58px; padding-top:20px; border-top:1px solid var(--line); color:#747b6b; font:10px var(--mono); letter-spacing:.04em; }
+    footer a { color:var(--muted); text-decoration:none; }
+    footer a:hover { color:var(--lime); }
+    .modal { position:fixed; inset:0; z-index:20; display:grid; place-items:center; padding:20px; background:rgba(5,7,5,.78); backdrop-filter:blur(12px); opacity:0; visibility:hidden; transition:opacity .2s ease,visibility .2s ease; }
+    .modal.open { opacity:1; visibility:visible; }
+    .modal-panel { width:min(100%,360px); padding:26px; border:1px solid var(--line); border-radius:22px; background:#1a1e17; text-align:center; box-shadow:0 24px 80px rgba(0,0,0,.5); transform:translateY(10px) scale(.98); transition:transform .2s ease; }
+    .modal.open .modal-panel { transform:translateY(0) scale(1); }
+    .modal-panel h3 { margin:0 0 7px; font:600 22px var(--display); }
+    .modal-panel p { margin:0 0 20px; color:var(--muted); font-size:12px; }
+    .qr-frame { display:inline-block; padding:12px; border-radius:15px; background:#fff; }
+    .qr-frame img { display:block; width:210px; height:210px; }
+    .close-btn { width:100%; margin-top:18px; padding:12px; border:0; border-radius:11px; background:var(--lime); color:var(--lime-ink); font:700 12px var(--sans); cursor:pointer; }
+    .toast { position:fixed; left:50%; bottom:24px; z-index:30; transform:translate(-50%,16px); opacity:0; pointer-events:none; padding:11px 16px; border:1px solid rgba(213,243,106,.3); border-radius:999px; background:#22291a; color:var(--text); font-size:12px; box-shadow:0 12px 35px rgba(0,0,0,.35); transition:opacity .2s ease,transform .2s ease; white-space:nowrap; }
+    .toast.show { opacity:1; transform:translate(-50%,0); }
+    @media (max-width:600px) {
+      .page { width:min(100% - 32px,500px); padding-top:24px; }
+      .topbar { margin-bottom:48px; }
+      .hero { margin-bottom:38px; }
+      .intro { font-size:14px; }
+      .support-grid { grid-template-columns:1fr; gap:10px; }
+      .featured { grid-column:auto; min-height:160px; }
+      .support-card { min-height:132px; padding:19px; }
+      .featured { padding:22px; }
+      footer { margin-top:42px; font-size:9px; }
     }
-
-    .card-info {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      min-width: 0;
-    }
-
-    .card-name {
-      font-size: 14.5px;
-      font-weight: 600;
-      color: var(--text-main);
-    }
-
-    .card-sub {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      color: var(--text-muted);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .card-actions-group {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .card-action-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: #161616;
-      border: 1px solid var(--surface-border);
-      color: var(--text-main);
-      padding: 8px 14px;
-      border-radius: 8px;
-      font-size: 12.5px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      flex-shrink: 0;
-      text-decoration: none;
-    }
-
-    .support-card:hover .card-action-btn {
-      background: #222222;
-      border-color: #444444;
-    }
-
-    /* QR CODE MODAL */
-    .qr-modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.8);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      z-index: 2000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.25s ease;
-    }
-
-    .qr-modal-overlay.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .qr-modal-card {
-      background: #0d0d0d;
-      border: 1px solid #2a2a2a;
-      border-radius: 20px;
-      padding: 28px;
-      width: 100%;
-      max-width: 340px;
-      text-align: center;
-      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.7);
-      transform: scale(0.95);
-      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .qr-modal-overlay.active .qr-modal-card {
-      transform: scale(1);
-    }
-
-    .qr-modal-title {
-      font-family: var(--font-display);
-      font-size: 18px;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 6px;
-    }
-
-    .qr-modal-sub {
-      font-size: 12.5px;
-      color: var(--text-muted);
-      margin-bottom: 20px;
-    }
-
-    .qr-frame {
-      background: #ffffff;
-      padding: 16px;
-      border-radius: 14px;
-      display: inline-block;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-    }
-
-    .qr-frame img {
-      width: 200px;
-      height: 200px;
-      display: block;
-    }
-
-    .btn-close-qr {
-      background: #1a1a1a;
-      border: 1px solid #333;
-      color: #fff;
-      padding: 10px;
-      border-radius: 10px;
-      font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
-      width: 100%;
-      transition: background 0.2s ease;
-    }
-
-    .btn-close-qr:hover {
-      background: #2a2a2a;
-    }
-
-    /* TOAST NOTIFICATION */
-    .toast {
-      position: fixed;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%) translateY(20px);
-      background: #222222;
-      color: #ffffff;
-      padding: 10px 20px;
-      border-radius: 99px;
-      font-size: 13px;
-      font-weight: 600;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-      border: 1px solid #333333;
-      opacity: 0;
-      pointer-events: none;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-      z-index: 1000;
-    }
-
-    .toast.show {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
-    }
-
-    .material-symbols-outlined {
-      font-size: 16px;
-    }
+    @media (prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; transition:none!important; } }
   </style>
 </head>
 <body>
-
-  <main>
-    <!-- PROFILE HEADER -->
-    <div class="profile-header">
-      <div class="handle-row">
-        <img src="https://github.com/kundarwork-debug.png" alt="Prasad Kundar" class="avatar-img" onerror="this.src='logo.svg'">
-        <span class="handle-text">@kundarwork</span>
-      </div>
-      <h1 class="intro-title">Hi, I'm Prasad</h1>
-      <p class="intro-desc">
-        Thanks for stopping by. Every coffee, sponsorship, or share keeps the projects going.
-      </p>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="section-title">SUPPORT MY WORK</div>
-
-    <!-- SUPPORT LINKS CONTAINER -->
-    <div class="support-list">
-      
-      <!-- 1. BUY ME A COFFEE -->
-      <a href="https://buymeacoffee.com/kundarwork" target="_blank" rel="noopener noreferrer" class="support-card">
-        <div class="card-info">
-          <span class="card-name">Buy me a Coffee</span>
-          <span class="card-sub">buymeacoffee.com/kundarwork</span>
-        </div>
-        <span class="card-action-btn">
-          <span>Visit</span>
-          <span class="material-symbols-outlined">north_east</span>
-        </span>
+  <div class="page">
+    <header class="topbar">
+      <a class="brand" href="https://github.com/kundarwork-debug" target="_blank" rel="noopener noreferrer" aria-label="Visit Prasad's GitHub profile">
+        <img src="https://github.com/kundarwork-debug.png" alt="">
+        <span>@kundarwork</span>
       </a>
+      <div class="availability">Independent creator</div>
+    </header>
 
-      <!-- 2. BUY ME A PIZZA -->
-      <a href="https://bondin.io/kundarwork/support" target="_blank" rel="noopener noreferrer" class="support-card">
-        <div class="card-info">
-          <span class="card-name">Buy me a Pizza</span>
-          <span class="card-sub">bondin.io/kundarwork/support</span>
+    <main>
+      <section class="hero">
+        <div class="eyebrow"><span>✳</span> A little support goes a long way</div>
+        <h1>Fuel the work.<br><em>Keep it going.</em></h1>
+        <p class="intro">Hey, I'm Prasad. I build projects, experiment with ideas, and share things that I hope are useful. If something I've made helped you, here's a small way to support what comes next.</p>
+      </section>
+
+      <section aria-labelledby="support-heading">
+        <div class="section-head">
+          <h2 id="support-heading">Choose your way to support</h2>
+          <span>THANK YOU ♥</span>
         </div>
-        <span class="card-action-btn">
-          <span>Visit</span>
-          <span class="material-symbols-outlined">north_east</span>
-        </span>
-      </a>
+        <div class="support-grid">
+          <a class="support-card featured" href="https://buymeacoffee.com/kundarwork" target="_blank" rel="noopener noreferrer">
+            <div>
+              <div class="card-icon" aria-hidden="true">☕</div>
+              <div class="card-title">Buy me a coffee</div>
+              <div class="card-desc">A little caffeine for the next late-night build. Every cup is appreciated.</div>
+            </div>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
 
-      <!-- 3. UPI / GPAY WITH QR CODE TRIGGER -->
-      <div class="support-card" onclick="openQrModal()" role="button" title="Click to view QR code">
-        <div class="card-info">
-          <span class="card-name">UPI / GPay</span>
-          <span class="card-sub" id="upiText">kundarprasad@slc</span>
+          <a class="support-card" href="https://bondin.io/kundarwork/support" target="_blank" rel="noopener noreferrer">
+            <div class="card-top"><span class="card-icon" aria-hidden="true">🍕</span><span class="arrow" aria-hidden="true">↗</span></div>
+            <div><div class="card-title">Buy me a pizza</div><div class="card-desc">Power a creative session with a slice.</div></div>
+          </a>
+
+          <a class="support-card" href="https://github.com/sponsors/kundarwork-debug" target="_blank" rel="noopener noreferrer">
+            <div class="card-top"><span class="card-icon" aria-hidden="true">⌘</span><span class="arrow" aria-hidden="true">↗</span></div>
+            <div><div class="card-title">GitHub Sponsors</div><div class="card-desc">Support open-source work and future updates.</div></div>
+          </a>
+
+          <div class="support-card upi-card" role="group" aria-label="UPI payment options">
+            <div class="card-top"><span class="card-icon" aria-hidden="true">₹</span><span class="arrow" aria-hidden="true">↗</span></div>
+            <div>
+              <div class="card-title">Pay via UPI</div>
+              <div class="card-desc" id="upiText">kundarprasad@slc</div>
+              <div class="upi-actions">
+                <button class="mini-btn" type="button" id="showQr"><span aria-hidden="true">▦</span> Show QR</button>
+                <button class="mini-btn" type="button" id="copyUpi"><span aria-hidden="true">⧉</span> Copy ID</button>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="card-actions-group">
-          <button type="button" class="card-action-btn" onclick="event.stopPropagation(); openQrModal()" title="Show QR Code">
-            <span class="material-symbols-outlined">qr_code_2</span>
-            <span>QR</span>
-          </button>
-          <button type="button" class="card-action-btn" onclick="event.stopPropagation(); copyUpiId('kundarprasad@slc')" title="Copy UPI ID">
-            <span class="material-symbols-outlined">content_copy</span>
-            <span>Copy</span>
-          </button>
-        </div>
-      </div>
+      </section>
 
-      <!-- 4. GITHUB SPONSORS -->
-      <a href="https://github.com/sponsors/kundarwork-debug" target="_blank" rel="noopener noreferrer" class="support-card">
-        <div class="card-info">
-          <span class="card-name">GitHub Sponsors</span>
-          <span class="card-sub">github.com/sponsors/kundarwork-debug</span>
-        </div>
-        <span class="card-action-btn">
-          <span>Visit</span>
-          <span class="material-symbols-outlined">north_east</span>
-        </span>
-      </a>
+      <aside class="note">
+        <span class="note-mark" aria-hidden="true">✦</span>
+        <span><strong>No pressure, ever.</strong> Sharing a project, reporting a bug, or simply being here means a lot too. Thank you for being part of the journey.</span>
+      </aside>
+    </main>
 
-    </div>
-  </main>
-
-  <!-- QR CODE MODAL POPUP -->
-  <div class="qr-modal-overlay" id="qrModalOverlay" onclick="closeQrModal(event)">
-    <div class="qr-modal-card" onclick="event.stopPropagation()">
-      <h3 class="qr-modal-title">Scan to Pay via UPI</h3>
-      <p class="qr-modal-sub">GPay • PhonePe • Paytm • BHIM</p>
-      
-      <div class="qr-frame">
-        <!-- Clean standard UPI QR Code -->
-        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=kundarprasad@slc%26pn=Prasad%20Kundar" alt="GPay UPI QR Code">
-      </div>
-
-      <button type="button" class="btn-close-qr" onclick="closeQrModal(event)">Close</button>
-    </div>
+    <footer>
+      <span>MADE WITH CARE BY PRASAD</span>
+      <a href="https://github.com/kundarwork-debug" target="_blank" rel="noopener noreferrer">MORE ABOUT ME ↗</a>
+    </footer>
   </div>
 
-  <!-- TOAST NOTIFICATION POPUP -->
-  <div class="toast" id="toastNotification">✓ UPI ID copied to clipboard!</div>
+  <div class="modal" id="qrModal" role="dialog" aria-modal="true" aria-labelledby="qrTitle" aria-hidden="true">
+    <div class="modal-panel">
+      <h3 id="qrTitle">Scan to support</h3>
+      <p>Pay securely using any UPI app</p>
+      <div class="qr-frame">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=210x210&amp;data=upi://pay?pa=kundarprasad@slc%26pn=Prasad%20Kundar" alt="UPI payment QR code for Prasad Kundar">
+      </div>
+      <button class="close-btn" type="button" id="closeQr">Done</button>
+    </div>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite">UPI ID copied!</div>
 
   <script>
-    function openQrModal() {
-      document.getElementById('qrModalOverlay').classList.add('active');
-    }
-
-    function closeQrModal(e) {
-      if (e.target.id === 'qrModalOverlay' || e.target.classList.contains('btn-close-qr')) {
-        document.getElementById('qrModalOverlay').classList.remove('active');
+    (() => {
+      const upiId = 'kundarprasad@slc';
+      const modal = document.getElementById('qrModal');
+      const toast = document.getElementById('toast');
+      let toastTimer;
+      function openModal() {
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.getElementById('closeQr').focus();
       }
-    }
-
-    function copyUpiId(text) {
-      navigator.clipboard.writeText(text).then(() => {
-        showToast("✓ UPI ID copied to clipboard!");
-      }).catch(() => {
-        const textarea = document.createElement('textarea');
-        textarea.value = text;
-        document.body.appendChild(textarea);
-        textarea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textarea);
-        showToast("✓ UPI ID copied to clipboard!");
-      });
-    }
-
-    function showToast(message) {
-      const toast = document.getElementById('toastNotification');
-      toast.textContent = message;
-      toast.classList.add('show');
-      setTimeout(() => {
-        toast.classList.remove('show');
-      }, 2500);
-    }
+      function closeModal() {
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.getElementById('showQr').focus();
+      }
+      function showToast(message) {
+        toast.textContent = message;
+        toast.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => toast.classList.remove('show'), 2300);
+      }
+      async function copyUpi() {
+        try {
+          if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(upiId);
+          } else {
+            const field = document.createElement('textarea');
+            field.value = upiId;
+            field.style.position = 'fixed';
+            field.style.opacity = '0';
+            document.body.appendChild(field);
+            field.select();
+            const copied = document.execCommand('copy');
+            field.remove();
+            if (!copied) throw new Error('Copy failed');
+          }
+          showToast('UPI ID copied to clipboard!');
+        } catch {
+          showToast('Please copy: ' + upiId);
+        }
+      }
+      document.getElementById('showQr').addEventListener('click', openModal);
+      document.getElementById('closeQr').addEventListener('click', closeModal);
+      document.getElementById('copyUpi').addEventListener('click', copyUpi);
+      modal.addEventListener('click', event => { if (event.target === modal) closeModal(); });
+      document.addEventListener('keydown', event => { if (event.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
+    })();
   </script>
 </body>
 </html>

@@ -67,7 +67,8 @@
     .featured .card-title{font-size:28px}
     .featured .card-icon{background:var(--lime);color:var(--lime-ink)}
     .featured .arrow{align-self:flex-start;color:var(--lime);font-size:25px}
-    .upi-card{cursor:default}
+    .upi-card{cursor:pointer}
+    .upi-card:focus-visible{outline:2px solid #0071e3;outline-offset:4px}
     .upi-actions{display:flex;gap:8px;margin-top:16px}
     .mini-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:37px;padding:0 12px;border:1px solid var(--line);border-radius:5px;background:rgba(255,255,255,.045);color:var(--text);font-size:11px;font-weight:700;cursor:pointer;transition:background .2s,border-color .2s}
     .mini-btn:hover{background:rgba(213,243,106,.10);border-color:rgba(213,243,106,.35)}
@@ -399,7 +400,7 @@
             <div class="card-top"><span class="card-icon" aria-hidden="true">⌘</span><span class="arrow" aria-hidden="true">↗</span></div>
             <div><div class="card-title">GitHub Sponsors</div><div class="card-desc">Support open-source work and the projects I keep building.</div></div>
           </a>
-          <div class="support-card upi-card" role="group" aria-label="UPI payment options">
+          <div class="support-card upi-card" role="button" tabindex="0" aria-label="Pay with QR code. Open UPI payment QR code">
             <div class="card-top"><span class="card-icon" aria-hidden="true">₹</span><span class="arrow" aria-hidden="true">↗</span></div>
             <div><div class="card-title">Pay directly via UPI</div><div class="card-desc" id="upiText">kundarprasad@slc</div>
               <div class="upi-actions"><button class="mini-btn" type="button" id="showQr"><span aria-hidden="true">▦</span> Show QR</button><button class="mini-btn" type="button" id="copyUpi"><span aria-hidden="true">⧉</span> Copy UPI ID</button></div>
@@ -549,6 +550,17 @@
           showToast('Please copy: ' + upiId);
         }
       }
+      const upiCard = document.querySelector('.upi-card');
+      upiCard.addEventListener('click', event => {
+        if (event.target.closest('button')) return;
+        openModal();
+      });
+      upiCard.addEventListener('keydown', event => {
+        if ((event.key === 'Enter' || event.key === ' ') && event.target === upiCard) {
+          event.preventDefault();
+          openModal();
+        }
+      });
       document.getElementById('showQr').addEventListener('click', openModal);
       document.getElementById('closeQr').addEventListener('click', closeModal);
       document.getElementById('copyUpi').addEventListener('click', copyUpi);

@@ -350,6 +350,63 @@
   }
   @media(max-width:420px){.project-art{transform:scale(.88);margin:0 -20px}.project-showcase{padding:30px 20px}}
 
+  
+  /* Focused tabbed support hub: keep the key action visible and remove the long-scroll feel. */
+  .hero{min-height:0;display:grid;grid-template-columns:1.05fr .95fr;grid-template-rows:auto auto auto;column-gap:20px;text-align:left;align-items:center;justify-items:start;padding:42px clamp(24px,5vw,62px);margin-bottom:22px}
+  .hero .eyebrow,.hero h1,.hero .hero-copy,.hero .hero-actions{grid-column:1;justify-self:start}
+  .hero .hero-visual{grid-column:2;grid-row:1 / span 4;width:100%;margin:0;align-self:center}
+  .hero .hero-visual img{display:block;width:100%;max-height:275px;object-fit:contain}
+  .hero h1{font-size:clamp(48px,6vw,72px);margin:20px 0 14px}
+  .hero-copy{font-size:14px;line-height:1.65}
+  .hero-actions{margin-top:22px;justify-content:flex-start}
+  .section-nav.tab-nav{position:relative;top:auto;z-index:2;width:max-content;max-width:100%;justify-content:center;margin:0 auto 22px;padding:5px;gap:4px}
+  .tab-nav button{display:flex;align-items:center;gap:9px;border:0;border-radius:999px;background:transparent;color:#6e6e73;padding:11px 20px;font:600 12px var(--sans);cursor:pointer;white-space:nowrap;transition:background .2s,color .2s,box-shadow .2s}
+  .tab-nav button span{font:500 9px var(--mono);color:#929298}
+  .tab-nav button:hover{background:#f3f7fc;color:#1d1d1f}
+  .tab-nav button.active{background:#0071e3;color:#fff;box-shadow:0 4px 12px rgba(0,113,227,.18)}
+  .tab-nav button.active span{color:rgba(255,255,255,.75)}
+  .tab-panels{min-height:360px}
+  .tab-panel{animation:tabIn .24s ease both}
+  .tab-panel[hidden]{display:none}
+  @keyframes tabIn{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+  .tab-panel section.content-section,.tab-panel .visual-story,.tab-panel .project-showcase{margin:0}
+  .tab-panel .section-heading{margin-bottom:20px}
+  .tab-panel .section-intro{margin-top:9px}
+  .tab-panel .visual-story{margin-bottom:18px;padding:28px}
+  .tab-panel .story-grid{gap:12px}
+  .tab-panel .story-tile{min-height:230px}
+  .tab-panel .story-tile img{height:135px}
+  .tab-panel .impact-card{min-height:185px}
+  .tab-panel .impact-number{margin-bottom:24px}
+  .tab-panel .fuel-layout{margin-top:18px}
+  .tab-panel .project-showcase{min-height:300px;margin-top:18px}
+  .tab-panel .quote-panel{margin-bottom:18px}
+  .tab-panel .closing{margin-top:18px}
+  footer{margin-top:28px}
+  @media(max-width:760px){
+    .hero{grid-template-columns:1fr;grid-template-rows:auto;min-height:0;padding:36px 25px;text-align:center;justify-items:center}
+    .hero .eyebrow,.hero h1,.hero .hero-copy,.hero .hero-actions{grid-column:1;justify-self:center}
+    .hero .hero-visual{grid-column:1;grid-row:auto;width:min(100%,300px);margin:8px auto 0}
+    .hero .hero-visual img{max-height:190px}
+    .hero h1{font-size:clamp(46px,10vw,66px)}
+    .hero-actions{justify-content:center}
+    .section-nav.tab-nav{width:100%;margin-bottom:18px}
+    .tab-nav button{flex:1;justify-content:center;padding:11px 8px}
+    .tab-panel .story-grid{grid-template-columns:1fr}
+    .tab-panel .story-tile{min-height:0}
+    .tab-panel .story-tile img{height:145px}
+    .tab-panel .project-showcase{grid-template-columns:1fr;text-align:center}
+    .tab-panel .project-art{min-height:220px}
+  }
+  @media(max-width:520px){
+    .tab-panels{min-height:0}
+    .tab-panel .support-grid{grid-template-columns:1fr}
+    .tab-panel .featured{grid-column:auto}
+    .tab-panel .impact-grid{grid-template-columns:1fr}
+    .tab-panel .fuel-layout{grid-template-columns:1fr}
+    .tab-panel .section-heading{align-items:flex-start}
+  }
+
   </style>
 </head>
 <body>
@@ -366,7 +423,7 @@
       <section class="hero" id="top" aria-labelledby="hero-title">
         <div class="eyebrow"><span>✳</span> A little support goes a long way</div>
         <h1 id="hero-title">Fuel the work.<br><em>Keep it going.</em></h1>
-        <p class="hero-copy">Hey, I'm Prasad. I build projects, experiment with ideas, and share things that I hope are useful. If something I've made helped you, here's a small way to support what comes next.</p>
+        <p class="hero-copy">I'm Prasad. I build and share useful projects. If something here helped you, you can help keep the work moving.</p>
         <div class="hero-visual"><img src="https://stories.freepiklabs.com/storage/26391/team-work-01.svg" alt="Storyset illustration of people working together on a project" fetchpriority="high"></div>
         <div class="hero-actions">
           <a class="primary-link" href="#support">Explore ways to support <span aria-hidden="true">↓</span></a>
@@ -374,17 +431,20 @@
         </div>
       </section>
 
-      <nav class="section-nav" aria-label="Page sections">
-        <a href="#support">Support</a>
-        <a href="#why">Why it matters</a>
-        <a href="#next">What's next</a>
-        <a href="#about">A note</a>
-        <a href="#faq">FAQ</a>
+      <nav class="section-nav tab-nav" aria-label="Support page tabs" role="tablist">
+        <button class="active" type="button" role="tab" id="tab-support" aria-controls="panel-support" aria-selected="true" data-tab="support"><span>01</span> Support</button>
+        <button type="button" role="tab" id="tab-impact" aria-controls="panel-impact" aria-selected="false" data-tab="impact"><span>02</span> Impact</button>
+        <button type="button" role="tab" id="tab-about" aria-controls="panel-about" aria-selected="false" data-tab="about"><span>03</span> About</button>
       </nav>
+      <div class="tab-panels" id="tabPanels">
+        <div class="tab-panel active" id="panel-support" role="tabpanel" aria-labelledby="tab-support"></div>
+        <div class="tab-panel" id="panel-impact" role="tabpanel" aria-labelledby="tab-impact" hidden></div>
+        <div class="tab-panel" id="panel-about" role="tabpanel" aria-labelledby="tab-about" hidden></div>
+      </div>
 
       <section class="content-section" id="support" aria-labelledby="support-heading">
         <div class="section-heading">
-          <div><span class="section-kicker">01 / Pick your way</span><h2 id="support-heading">Choose how to support</h2><p class="section-intro">There isn't a right amount or a preferred option. Choose whichever feels easiest for you.</p></div>
+          <div><span class="section-kicker">01 / Pick your way</span><h2 id="support-heading">Choose how to support</h2><p class="section-intro">Choose whichever option feels easiest. Every bit is appreciated.</p></div>
           <span class="section-count">01 — 05</span>
         </div>
         <div class="support-grid">
@@ -567,18 +627,47 @@
       modal.addEventListener('click', event => { if (event.target === modal) closeModal(); });
       document.addEventListener('keydown', event => { if (event.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
 
-      const navLinks = [...document.querySelectorAll('.section-nav a')];
-      const sections = navLinks.map(link => document.querySelector(link.getAttribute('href'))).filter(Boolean);
-      if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver(entries => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id));
-            }
-          });
-        }, { rootMargin: '-22% 0px -65% 0px' });
-        sections.forEach(section => observer.observe(section));
+      const panels = {
+        support: document.getElementById('panel-support'),
+        impact: document.getElementById('panel-impact'),
+        about: document.getElementById('panel-about')
+      };
+      const groups = {
+        support: ['support'],
+        impact: ['visual-story', 'why', 'next', 'project-showcase'],
+        about: ['about', 'faq', 'closing']
+      };
+      Object.entries(groups).forEach(([name, ids]) => {
+        ids.forEach(id => {
+          const node = id === 'visual-story' || id === 'project-showcase'
+            ? document.querySelector('.' + id)
+            : document.getElementById(id);
+          if (node) panels[name].appendChild(node);
+        });
+      });
+      const tabs = [...document.querySelectorAll('.tab-nav [role="tab"]')];
+      function activateTab(name, focus = false) {
+        tabs.forEach(tab => {
+          const selected = tab.dataset.tab === name;
+          tab.classList.toggle('active', selected);
+          tab.setAttribute('aria-selected', String(selected));
+          tab.tabIndex = selected ? 0 : -1;
+          panels[name === tab.dataset.tab ? name : tab.dataset.tab].hidden = !selected;
+        });
+        if (focus) document.getElementById('tab-' + name).focus();
       }
+      tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => activateTab(tab.dataset.tab));
+        tab.addEventListener('keydown', event => {
+          if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+          event.preventDefault();
+          const next = event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1
+            : (index + (event.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length;
+          activateTab(tabs[next].dataset.tab, true);
+        });
+      });
+      activateTab('support');
+
     })();
   </script>
 </body>

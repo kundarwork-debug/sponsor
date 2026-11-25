@@ -285,6 +285,63 @@
     footer{align-items:flex-start;flex-direction:column}
   }
 
+
+  /* Longer, illustration-led storytelling sections */
+  .hero{min-height:560px;display:grid;grid-template-columns:1.05fr .95fr;grid-template-rows:auto auto auto;column-gap:16px;text-align:left;align-items:center;justify-items:start;padding:64px clamp(28px,5vw,70px)}
+  .hero .eyebrow,.hero h1,.hero .hero-copy,.hero .hero-actions{grid-column:1;justify-self:start}
+  .hero .hero-visual{grid-column:2;grid-row:1 / span 4;width:100%;align-self:center;justify-self:center;margin:0 -20px 0 0}
+  .hero-visual svg{display:block;width:100%;height:auto;overflow:visible}
+  .hero h1{font-size:clamp(52px,6.4vw,78px);margin:24px 0 17px}
+  .hero-copy{max-width:440px;font-size:15px}
+  .hero-actions{justify-content:flex-start}
+  .visual-story{margin:0 0 112px;padding:clamp(30px,6vw,68px);border:1px solid rgba(29,29,31,.06);border-radius:30px;background:linear-gradient(145deg,#fff,#f8fbff);box-shadow:0 14px 45px rgba(29,29,31,.035)}
+  .visual-story-heading{text-align:center;margin:0 auto 35px}
+  .visual-story-heading h2{max-width:650px;margin:auto}
+  .story-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+  .story-tile{min-height:300px;padding:18px 20px 23px;border-radius:23px;display:flex;flex-direction:column;align-items:flex-start;overflow:hidden}
+  .story-tile svg{width:100%;height:180px;object-fit:contain;margin:0 auto 9px}
+  .story-tile>span{font:600 10px var(--mono);color:#0071e3;margin-bottom:10px}
+  .story-tile h3{margin:0 0 5px;font:600 20px var(--display);letter-spacing:-.04em;color:#1d1d1f}
+  .story-tile p{margin:0;color:#6e6e73;font-size:13px}
+  .story-blue{background:#f0f7ff}.story-lilac{background:#f6f3ff}.story-mint{background:#effaf5}
+  .project-showcase{position:relative;display:grid;grid-template-columns:.9fr 1.1fr;align-items:center;gap:25px;min-height:400px;margin:0 0 110px;padding:clamp(30px,6vw,65px);overflow:hidden;border-radius:30px;background:#171d29;color:#fff}
+  .project-copy{position:relative;z-index:2}
+  .project-copy .section-kicker{color:#91c7ff}
+  .project-copy h2{color:#fff;font-size:clamp(36px,5vw,55px)}
+  .project-copy p{max-width:330px;margin:16px 0 24px;color:#c1cad8;font-size:14px;line-height:1.7}
+  .project-copy>a{display:inline-flex;gap:12px;align-items:center;padding:12px 18px;border-radius:999px;background:#fff;color:#1d1d1f;text-decoration:none;font-size:12px;font-weight:700}
+  .project-art{position:relative;min-height:290px;display:grid;place-items:center}
+  .orbit{position:absolute;border:1px solid rgba(145,199,255,.22);border-radius:50%;transform:rotate(-20deg)}
+  .orbit-one{width:330px;height:220px}.orbit-two{width:420px;height:280px;transform:rotate(30deg)}
+  .project-window{position:relative;z-index:1;width:min(100%,360px);height:225px;border:1px solid rgba(255,255,255,.2);border-radius:17px;background:#f8fbff;box-shadow:0 25px 70px rgba(0,0,0,.3);transform:rotate(-5deg)}
+  .window-dots{height:32px;display:flex;align-items:center;gap:5px;padding:0 13px;border-bottom:1px solid #e6eaf0}
+  .window-dots i{width:7px;height:7px;border-radius:50%;background:#cbd5e1}
+  .window-content{display:flex;height:calc(100% - 32px);padding:15px;gap:13px}
+  .window-side{width:25%;border-radius:7px;background:#eaf2fc}
+  .window-main{flex:1;padding:4px}
+  .window-main>b{display:block;width:75%;height:8px;margin:0 0 10px;border-radius:8px;background:#d6e5f7}
+  .window-main>b:nth-child(2){width:55%}.window-main>b:nth-child(3){width:88%}
+  .window-cards{display:flex;gap:8px;margin-top:18px}
+  .window-cards i{flex:1;height:75px;border-radius:8px;background:linear-gradient(145deg,#d8eaff,#f0f6ff)}
+  .float-chip{position:absolute;z-index:2;display:grid;place-items:center;width:43px;height:43px;border:1px solid rgba(255,255,255,.25);border-radius:14px;background:#25364f;color:#a9d4ff;font-size:20px;box-shadow:0 10px 30px rgba(0,0,0,.2)}
+  .chip-one{top:20px;right:12%}.chip-two{bottom:28px;left:12%;background:#244a42;color:#9ce6c7}.chip-three{top:48%;right:0;background:#43365f;color:#d3bfff}
+  @media(max-width:760px){
+    .hero{grid-template-columns:1fr;grid-template-rows:auto;min-height:0;padding:48px 25px;text-align:center;justify-items:center}
+    .hero .eyebrow,.hero h1,.hero .hero-copy,.hero .hero-actions{grid-column:1;justify-self:center}
+    .hero .hero-visual{grid-column:1;grid-row:auto;width:min(100%,390px);margin:12px auto -5px}
+    .hero h1{font-size:clamp(48px,10vw,70px)}
+    .hero-copy{max-width:520px}
+    .hero-actions{justify-content:center}
+    .story-grid{grid-template-columns:1fr;max-width:480px;margin:auto}
+    .story-tile{min-height:260px}
+    .story-tile svg{height:160px}
+    .visual-story{margin-bottom:82px;padding:28px 20px}
+    .project-showcase{grid-template-columns:1fr;gap:0;margin-bottom:82px;text-align:center}
+    .project-copy p{margin-left:auto;margin-right:auto}
+    .project-art{min-height:260px}
+  }
+  @media(max-width:420px){.project-art{transform:scale(.88);margin:0 -20px}.project-showcase{padding:30px 20px}}
+
   </style>
 </head>
 <body>
@@ -302,6 +359,17 @@
         <div class="eyebrow"><span>✳</span> A little support goes a long way</div>
         <h1 id="hero-title">Fuel the work.<br><em>Keep it going.</em></h1>
         <p class="hero-copy">Hey, I'm Prasad. I build projects, experiment with ideas, and share things that I hope are useful. If something I've made helped you, here's a small way to support what comes next.</p>
+        <div class="hero-visual" aria-hidden="true">
+          <svg viewBox="0 0 560 330" role="img" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="heroBlue" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0071e3"/><stop offset="1" stop-color="#74bdff"/></linearGradient><linearGradient id="heroSoft" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e4f1ff"/><stop offset="1" stop-color="#f7fbff"/></linearGradient></defs>
+            <circle cx="282" cy="162" r="132" fill="url(#heroSoft)"/><circle cx="282" cy="162" r="106" fill="none" stroke="#c9e2ff" stroke-width="2" stroke-dasharray="5 8"/>
+            <rect x="178" y="84" width="204" height="148" rx="18" fill="#fff" stroke="#dcecff" stroke-width="2"/><rect x="196" y="104" width="168" height="12" rx="6" fill="#e8f2ff"/><rect x="196" y="128" width="112" height="8" rx="4" fill="#edf0f4"/><rect x="196" y="144" width="145" height="8" rx="4" fill="#edf0f4"/>
+            <rect x="196" y="174" width="68" height="38" rx="10" fill="url(#heroBlue)"/><path d="M218 193l9 8 16-18" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M114 224c-10-30 7-62 39-70 20-5 38 2 51 17l-13 17c-10-9-21-12-33-8-15 5-22 21-17 37l-27 7z" fill="#1d1d1f"/><circle cx="151" cy="143" r="19" fill="#ffd5bd"/><path d="M133 139c2-18 23-27 36-15l4 13c-12-5-23-3-40 2z" fill="#30343b"/>
+            <path d="M386 218c10-29 34-46 60-42 22 4 36 20 39 43l-99-1z" fill="#dcecff"/><circle cx="430" cy="151" r="17" fill="#ffd5bd"/><path d="M413 148c2-17 22-24 34-13l4 12c-12-5-24-3-38 1z" fill="#30343b"/>
+            <path d="M280 36l8 17 18 3-13 13 3 18-16-9-16 9 3-18-13-13 18-3z" fill="#ffcf5a"/><circle cx="95" cy="91" r="10" fill="#ffcf5a"/><circle cx="467" cy="78" r="7" fill="#0071e3"/><path d="M89 265l10 10-10 10-10-10z" fill="#8cc6ff"/>
+          </svg>
+        </div>
         <div class="hero-actions">
           <a class="primary-link" href="#support">Explore ways to support <span aria-hidden="true">↓</span></a>
           <a class="secondary-link" href="https://github.com/kundarwork-debug" target="_blank" rel="noopener noreferrer">Explore my GitHub ↗</a>
@@ -343,6 +411,24 @@
         </div>
       </section>
 
+      <section class="visual-story" aria-label="How support helps">
+        <div class="visual-story-heading"><span class="section-kicker">SMALL ACTS. REAL MOMENTUM.</span><h2>Every bit moves an idea forward.</h2></div>
+        <div class="story-grid">
+          <article class="story-tile story-blue">
+            <svg viewBox="0 0 260 190" aria-hidden="true"><circle cx="130" cy="94" r="72" fill="#d9ebff"/><rect x="83" y="49" width="94" height="91" rx="12" fill="#fff" stroke="#9ccaff" stroke-width="3"/><path d="M102 75h56M102 91h44M102 107h30" stroke="#b8c9dc" stroke-width="6" stroke-linecap="round"/><path d="M130 28v23m-11-11 11 11 11-11" fill="none" stroke="#0071e3" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="184" cy="127" r="16" fill="#0071e3"/><path d="M177 127l5 5 9-11" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg>
+            <span>01</span><h3>Ideas become real.</h3><p>Time to build.</p>
+          </article>
+          <article class="story-tile story-lilac">
+            <svg viewBox="0 0 260 190" aria-hidden="true"><circle cx="130" cy="94" r="72" fill="#eee8ff"/><rect x="77" y="58" width="106" height="72" rx="12" fill="#fff" stroke="#c7b5ff" stroke-width="3"/><path d="M90 75h80M90 91h51M90 107h65" stroke="#d8d1e8" stroke-width="6" stroke-linecap="round"/><path d="M130 39l8 18 19 2-14 13 4 19-17-10-17 10 4-19-14-13 19-2z" fill="#8d6be8"/><circle cx="183" cy="50" r="8" fill="#ffcf5a"/><circle cx="76" cy="137" r="7" fill="#8d6be8"/></svg>
+            <span>02</span><h3>Good work gets better.</h3><p>Room to improve.</p>
+          </article>
+          <article class="story-tile story-mint">
+            <svg viewBox="0 0 260 190" aria-hidden="true"><circle cx="130" cy="94" r="72" fill="#def6ed"/><path d="M83 119c15-37 38-55 70-55 17 0 30 5 43 16" fill="none" stroke="#35a77b" stroke-width="8" stroke-linecap="round"/><path d="M183 59l14 21-25 2" fill="none" stroke="#35a77b" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><rect x="86" y="105" width="88" height="37" rx="18" fill="#fff" stroke="#a5dfc8" stroke-width="3"/><circle cx="108" cy="123" r="7" fill="#35a77b"/><circle cx="130" cy="123" r="7" fill="#35a77b"/><circle cx="152" cy="123" r="7" fill="#35a77b"/></svg>
+            <span>03</span><h3>More gets shared.</h3><p>Made for everyone.</p>
+          </article>
+        </div>
+      </section>
+
       <section class="content-section" id="why" aria-labelledby="why-heading">
         <div class="section-heading">
           <div><span class="section-kicker">02 / The reason behind it</span><h2 id="why-heading">Why your support matters</h2><p class="section-intro">Independent projects are built one small step at a time. Your support can make those steps a little easier.</p></div>
@@ -368,6 +454,15 @@
             <li><b>03</b><span>Exploring new tools, ideas, and experiments.</span></li>
             <li><b>04</b><span>Sharing useful work with the community.</span></li>
           </ul></div>
+        </div>
+      </section>
+
+      <section class="project-showcase" aria-label="The work behind the page">
+        <div class="project-copy"><span class="section-kicker">BUILT WITH CURIOSITY</span><h2>Useful things.<br>Made to be shared.</h2><p>Explore the projects, experiments and open-source work.</p><a href="https://github.com/kundarwork-debug" target="_blank" rel="noopener noreferrer">Explore the work <span aria-hidden="true">↗</span></a></div>
+        <div class="project-art" aria-hidden="true">
+          <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+          <div class="project-window"><div class="window-dots"><i></i><i></i><i></i></div><div class="window-content"><div class="window-side"></div><div class="window-main"><b></b><b></b><b></b><div class="window-cards"><i></i><i></i><i></i></div></div></div></div>
+          <div class="float-chip chip-one">✦</div><div class="float-chip chip-two">↗</div><div class="float-chip chip-three">⌘</div>
         </div>
       </section>
 
